@@ -92,4 +92,42 @@ void pop_back() {
     }
     delete temp;
 }
+int main() {
+    srand(time(0));  // Randomize seed for random numbers
+    DoublyLinkedList list;
+
+    // Add some nodes to the list
+    int size = rand() % 16 + 5;  // Random number between 5 and 20
+    for (int i = 0; i < size; ++i) {
+        list.push_back(rand() % 90 + 10);  // Push random integers between 10 and 99
+    }
+
+    cout << "Initial List forward: ";
+    list.print();
+
+    cout << "Initial List backward: ";
+    list.print_reverse();
+
+    // Test pop_front()
+    cout << "\nPopping front...\n";
+    list.pop_front();
+    list.print();
+
+    // Test pop_back()
+    cout << "\nPopping back...\n";
+    list.pop_back();
+    list.print();
+
+    // Test delete_val()
+    cout << "\nDeleting value 50 if present...\n";
+    list.delete_val(50);  // Attempt to delete the value 50
+    list.print();
+
+    // Test delete_pos()
+    cout << "\nDeleting node at position 2...\n";
+    list.delete_pos(2);  // Delete the node at position 2
+    list.print();
+
+    return 0;
+}
 
