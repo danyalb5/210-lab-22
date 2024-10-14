@@ -39,3 +39,34 @@ public:
         delete temp;
     }
 };
+void delete_pos(int position) {
+    if (position < 0 || !head) {
+        cout << "Invalid position or empty list." << endl;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 0; temp != nullptr && i < position; ++i) {
+        temp = temp->next;
+    }
+
+    if (!temp) {
+        cout << "Position exceeds list size." << endl;
+        return;
+    }
+
+    if (temp->prev) {
+        temp->prev->next = temp->next;
+    } else {
+        head = temp->next;  // Deleting the head
+    }
+
+    if (temp->next) {
+        temp->next->prev = temp->prev;
+    } else {
+        tail = temp->prev;  // Deleting the tail
+    }
+
+    delete temp;
+}
+
