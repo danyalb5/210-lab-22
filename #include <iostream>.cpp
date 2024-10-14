@@ -69,4 +69,27 @@ void delete_pos(int position) {
 
     delete temp;
 }
+void pop_front() {
+    if (!head) return; // List is empty
+    Node* temp = head;
+    head = head->next;
+    if (head) {
+        head->prev = nullptr;
+    } else {
+        tail = nullptr; // If head becomes nullptr, tail must also be nullptr
+    }
+    delete temp;
+}
+
+void pop_back() {
+    if (!tail) return; // List is empty
+    Node* temp = tail;
+    tail = tail->prev;
+    if (tail) {
+        tail->next = nullptr;
+    } else {
+        head = nullptr; // If tail becomes nullptr, head must also be nullptr
+    }
+    delete temp;
+}
 
